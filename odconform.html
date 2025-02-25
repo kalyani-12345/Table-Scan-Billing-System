@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation | Moonbrew Café</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="odconform.css">
+</head>
+<body>
+    <div class="container">
+        <h3 class="text-center">Order Confirmation</h3>
+        <div id="orderSummary">
+            <!-- Order items will be dynamically added here -->
+        </div>
+        <button id="confirmOrderBtn" class="btn btn-primary mt-3">Confirm Order</button>
+    </div>
+
+    <script>
+        // Retrieve logged-in user details
+        const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+        if (!loggedInUser) {
+            alert("Please login first.");
+            window.location.href = "logiin.html";
+        }
+
+        // Sample order data (replace with actual data from your application)
+        const orderItems = [
+            { name: "Coffee", quantity: 2, price: 100 },
+            { name: "Sandwich", quantity: 1, price: 150 },
+            { name: "Cake", quantity: 1, price: 200 },
+        ];
+
+        // Display order summary
+        const orderSummaryDiv = document.getElementById("orderSummary");
+        let totalPrice = 0;
+
+        orderItems.forEach(item => {
+            const itemTotal = item.quantity * item.price;
+            totalPrice += itemTotal;
+
+            const itemDiv = document.createElement("div");
+            itemDiv.className = "mb-3";
+            itemDiv.innerHTML = `
+                <p><strong>${item.name}</strong> (Qty: ${item.quantity}) - ₹${item.price} x ${item.quantity} = ₹${itemTotal}</p>
+            `;
+            orderSummaryDiv.appendChild(itemDiv);
+        });
+
+        // Display total price
+        const totalDiv = document.createElement("div");
+        totalDiv.className = "mb-3";
+        totalDiv.innerHTML = `<h5>Total Price: ₹${totalPrice}</h5>`;
+        orderSummaryDiv.appendChild(totalDiv);
+
+        // Confirm order button
+        document.getElementById("confirmOrderBtn").addEventListener("click", () => {
+            localStorage.setItem("orderItems", JSON.stringify(orderItems));
+            localStorage.setItem("totalPrice", totalPrice);
+            window.location.href = "digibill.html";
+        });
+    </script>
+</body>
+</html>
