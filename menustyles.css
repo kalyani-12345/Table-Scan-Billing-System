@@ -11,6 +11,36 @@ body {
     padding: 20px;
 }
 
+.table-number-section {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.table-number-section label {
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.table-number-section select {
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: white;
+    cursor: pointer;
+}
+
+.table-number-section select:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.add-to-cart:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
 .container {
     background: rgba(255, 255, 255, 0.8);
     padding: 20px;
