@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Bill - Moonbrew Café</title>
+  <link rel="stylesheet" href="Digibill.css">
+  <script defer src="Digibill.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+  <div class="bill-container">
+    <h1>Moonbrew Café</h1>
+    <p class="cafe-address">Patia, Bhubaneswar</p>
+
+    <div class="customer-details">
+      <p><strong>Customer Name:</strong> <span id="customer-name">John Doe</span></p>
+      <p><strong>Phone No:</strong> <span id="customer-phone">9876543210</span></p>
+    </div>
+
+    <div class="bill-details">
+      <h2>Your Bill</h2>
+      <table class="bill-table">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Qty</th>
+            <th>Price</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody id="order-items">
+          <!-- Items will be dynamically inserted here -->
+        </tbody>
+      </table>
+      <div class="taxes">
+        <p><strong>SGST (9%):</strong> <span id="sgst">₹16.20</span></p>
+        <p><strong>CGST (9%):</strong> <span id="cgst">₹16.20</span></p>
+      </div>
+      <div class="bill-total">
+        <p><strong>Total Price:</strong> <span id="total-price">₹212.40</span></p>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button id="send-sms">Send SMS</button>
+      <button id="download-pdf">Download PDF</button>
+    </div>
+
+    <div class="payment-options">
+      <h2>Payment Options</h2>
+      <button id="online-payment">Pay Online</button>
+    </div>
+
+    <div id="online-payment-options" class="hidden">
+      <h2>Choose Online Payment</h2>
+      <button id="phonepe-payment">Pay with PhonePe</button>
+      <button id="gpay-payment">Pay with GPay</button>
+    </div>
+  </div>
+</body>
+</html>
